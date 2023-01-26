@@ -1,6 +1,7 @@
 pipeline{
 
 agent any
+ 
 
  triggers{
     scmPoll * * * * *
@@ -8,6 +9,7 @@ agent any
  stages{
  
   stage ("build"){
+     git branch: 'main', credentialsId: 'githubpseshagiri', url: 'https://github.com/pseshagiri/microservice-devops.git'
     sh './gradle assemble'
   }
   stage("Test"){
